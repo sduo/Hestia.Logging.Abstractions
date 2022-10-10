@@ -6,6 +6,7 @@ namespace Hestia.Logging.Abstractions
 {
     public record Log
     {
+        public Guid Id { get; init; }
         public string Category { get; init; }
 
         public LogLevel Level { get; init ; }
@@ -24,6 +25,7 @@ namespace Hestia.Logging.Abstractions
 
         public Log(string category, DateTimeOffset timestamp,  LogLevel level, EventId @event, string message,Exception exception = null)
         {
+            Id = Guid.NewGuid();
             Category = category;
             Timestamp = timestamp;
             Level = level;
